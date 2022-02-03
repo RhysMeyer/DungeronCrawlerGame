@@ -7,7 +7,7 @@ public class Main {
         Room testRoom = new Room("Stone");
         Block stone = new Block("Stone", "▢" , "Passable");
         testRoom.addValidBlock(stone);
-        testRoom.CreateRoom();
+        testRoom.createRoom();
         System.out.println(testRoom.getDisplayRoom());
 
 

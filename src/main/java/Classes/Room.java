@@ -27,13 +27,14 @@ public class Room {
 
     public void addValidBlock(Block block)
     {
-        if(validBlocks.size() == 0) addBorder();
-            if(!validBlocks.contains(block)) {
-                validBlocks.add(block);
-            }
+        if(validBlocks.isEmpty()) addBorder();
+        if(!validBlocks.contains(block))
+        {
+            validBlocks.add(block);
+        }
     }
 
-    public void CreateRoom()
+    public void createRoom()
     {
         for (int i = 0; i < room.length; i++)
         {
@@ -46,7 +47,7 @@ public class Room {
                 else
                 {
                     for (Block b: validBlocks) {
-                        if(b.getName() == defaultBlockName){
+                        if(b.getName().equals(defaultBlockName)){
                             blockToAdd = b;
                         }
                     }
