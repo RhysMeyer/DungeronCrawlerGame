@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class Room {
 
-    Block[][] room = new Block[11][11];
-    ArrayList<Block> validBlocks = new ArrayList<Block>();
+    Block[][] roomMap = new Block[11][11];
+    ArrayList<Block> validBlocks = new ArrayList<>();
     String defaultBlockName;
     Block blockToAdd = new Block();
     Player currentPlayer = new Player();
@@ -50,17 +50,17 @@ public class Room {
 
     public void createRoom()
     {
-        for (int i = 0; i < room.length; i++)
+        for (int i = 0; i < roomMap.length; i++)
         {
-            for (int j =0; j < room[i].length; j++)
+            for (int j = 0; j < roomMap[i].length; j++)
             {
                 if(i==0 || i == 10 || j == 0 || j==10)
                 {
-                    room[j][i] = validBlocks.get(0);
+                    roomMap[j][i] = validBlocks.get(0);
                     for (int[] d: doorLocations) {
                         if (d[0] == j && d[1] == i)
                         {
-                            room[j][i] = validBlocks.get(1);
+                            roomMap[j][i] = validBlocks.get(1);
                         }
                     }
                 }
@@ -71,7 +71,7 @@ public class Room {
                             blockToAdd = b;
                         }
                     }
-                    room[i][j] = blockToAdd;
+                    roomMap[i][j] = blockToAdd;
                 }
             }
         }
@@ -79,33 +79,35 @@ public class Room {
 
     public String getDisplayRoom()
     {
-        String roomDisplay = "";
-        for (int i = 0; i < room.length; i++)
+        StringBuilder roomDisplay = new StringBuilder();
+        //String roomDisplay = "";
+        for (int i = 0; i < roomMap.length; i++)
         {
-            for (int j =0; j < room[i].length; j++)
+            for (int j = 0; j < roomMap[i].length; j++)
             {
                 if(getCurrentPlayer().getPosition()[0] == j && getCurrentPlayer().getPosition()[1] == i)
                 {
-                    roomDisplay = roomDisplay + "P";
+                    //roomDisplay = roomDisplay + "P";
+                    roomDisplay.append("P");
                 }
                 else {
-                    roomDisplay = roomDisplay + room[j][i].getTileChar();
+                    roomDisplay = roomDisplay.append(roomMap[j][i].getTileChar());
                 }
                 if(i <= 10)
                 {
-                    roomDisplay = roomDisplay + " ";
+                    roomDisplay.append(" ");
                 }
             }
-            roomDisplay = roomDisplay + "\n";
+            roomDisplay = roomDisplay.append("\n");
         }
-        return roomDisplay;
+        return roomDisplay.toString();
     }
 
     public boolean validSpace(int xChange, int yChange)
     {
         int[] currentPosition =getCurrentPlayer().getPosition();
-        System.out.println((room[currentPosition[0]+xChange][currentPosition[1]+yChange]).getName());
-        boolean isValid = room[currentPosition[0]+xChange][currentPosition[1]+yChange].getValid().equals(Block.Validity.Passable);
+        System.out.println((roomMap[currentPosition[0]+xChange][currentPosition[1]+yChange]).getName());
+        boolean isValid = roomMap[currentPosition[0]+xChange][currentPosition[1]+yChange].getValid().equals(Block.Validity.passable);
         return isValid;
     }
 }

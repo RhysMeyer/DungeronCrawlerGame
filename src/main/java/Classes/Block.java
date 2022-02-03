@@ -3,9 +3,8 @@ package Classes;
 public class Block extends  Entity{
 
     public enum Validity {
-        Passable,
-        Condtional,
-        Impassable;
+        passable,
+        impassable;
     }
     private String tileChar;
 
@@ -21,23 +20,15 @@ public class Block extends  Entity{
         setTileChar(tileChar);
         switch(valid) {
             case "Passable":
-                this.valid = Validity.Passable;
+                this.valid = Validity.passable;
                 break;
-            case "Condtional":
-                this.valid = Validity.Condtional;
-                break;
-            case "Impassable":
-                this.valid = Validity.Impassable;
             default:
-                this.valid = Validity.Impassable;
+                this.valid = Validity.impassable;
+                break;
         }
 
     }
 
-//    public Validity getValidtyEnum()
-//    {
-//        return Validity;
-//    }
 
     public void setValidity(Validity x)
     {
