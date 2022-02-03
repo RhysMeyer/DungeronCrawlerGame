@@ -2,21 +2,19 @@ package Classes;
 
 public class Block extends  Entity{
 
-    private enum Validity {
+    public enum Validity {
         Passable,
         Condtional,
-        Impassable
+        Impassable;
     }
     private String tileChar;
 
     private Validity valid;
 
-
     Block()
     {
 
     }
-
     Block(String name, String tileChar, String valid)
     {
         setName(name);
@@ -36,12 +34,17 @@ public class Block extends  Entity{
 
     }
 
+//    public Validity getValidtyEnum()
+//    {
+//        return Validity;
+//    }
+
     public void setValidity(Validity x)
     {
         valid = x ;
     }
 
-    public Validity getValidity()
+    public Validity getValid()
     {
         return valid;
     }

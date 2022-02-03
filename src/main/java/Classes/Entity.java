@@ -10,6 +10,7 @@ abstract class Entity {
         position[0] = x;
         position[1] = y;
     }
+
     public int[] getPosition()
     {
        return position;
