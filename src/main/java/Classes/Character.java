@@ -3,6 +3,7 @@ package Classes;
 
 abstract class Character {
 
+    private int maxHealth;
     private int health;
     private int damage;
 
@@ -10,8 +11,15 @@ abstract class Character {
         this.health = health;
     }
 
+    public void setMaxHealth(int maxHealth) {
+        this.maxHealth = maxHealth;
+    }
+
     public int getHealth(int health) {
         return health;
+    }
+    public int getMaxHealth(int maxHealth) {
+        return maxHealth;
     }
 
     public void setDamage(int damage){
