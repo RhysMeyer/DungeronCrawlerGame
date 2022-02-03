@@ -3,6 +3,7 @@ package Classes;
 abstract class Entity {
 
     int[] position = new int[2];
+    private String name;
 
     public void setPosition(int x, int y)
     {
@@ -14,4 +15,11 @@ abstract class Entity {
        return position;
     }
 
+    public void setName(String name){
+        this.name = name;
+    }
+
+    public String getName(){
+       return name;
+    }
 }
